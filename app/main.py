@@ -89,10 +89,10 @@ app = FastAPI(
 # Add middleware - TEMPORARY: Allow all origins for immediate fix
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=False,  # Must be False when using "*"
-    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allow_headers=["*"],
+    allow_origins=["https://cap-frontend-w94q-git-main-vis-projects-82c0f63d.vercel.app"],
+    allow_credentials=False,  # Keep false if no auth
+    allow_methods=["*"],      # Allow all HTTP methods
+    allow_headers=["*"],      # Allow all headers
 )
 
 app.add_middleware(
@@ -818,10 +818,12 @@ async def shutdown_event():
 
 # Run the application
 if __name__ == "__main__":
+    import os
+    port = int(os.environ.get("PORT", 8000))
     uvicorn.run(
         "app.main:app",
         host="0.0.0.0",
-        port=8000,
+        port=port,
         reload=True,
-        log_level="info"
-    ) 
+        log_level="info",
+    )
