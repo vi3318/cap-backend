@@ -86,16 +86,11 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# Add middleware
+# Add middleware - TEMPORARY: Allow all origins for immediate fix
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "https://cap-frontend-w94q-qh0552vw9-vis-projects-82c0f63d.vercel.app",
-        "https://capstone-frontend-vidharias-projects-82c0f63d.vercel.app"
-    ],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,  # Must be False when using "*"
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test CORS</title>
+</head>
+<body>
+    <h1>CORS Test</h1>
+    <button onclick="testCORS()">Test Railway Backend</button>
+    <div id="result"></div>
+    
+    <script>
+        async function testCORS() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Testing...';
+            
+            try {
+                const response = await fetch('https://web-production-d301.up.railway.app/health');
+                const data = await response.json();
+                resultDiv.innerHTML = `<p style="color: green;">✅ SUCCESS: ${JSON.stringify(data)}</p>`;
+            } catch (error) {
+                resultDiv.innerHTML = `<p style="color: red;">❌ FAILED: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
