@@ -92,11 +92,11 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",
         "http://127.0.0.1:3000",
-        "https://*.vercel.app",
-        "https://cap-frontend-w94q-qh0552vw9-vis-projects-82c0f63d.vercel.app"
+        "https://cap-frontend-w94q-qh0552vw9-vis-projects-82c0f63d.vercel.app",
+        "https://capstone-frontend-vidharias-projects-82c0f63d.vercel.app"
     ],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 
